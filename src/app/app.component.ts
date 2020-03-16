@@ -16,9 +16,17 @@ export class AppComponent implements OnInit {
       console.log("Response received");
       console.log(data);
     });
+    this.webSocket.listen("session_confirm").subscribe(data => {
+      console.log("Session is CONFIRMED");
+      this.webSocket.emit("message", {
+        sender_id: "shivampip",
+        session_id: "shivampip",
+        message: "bye"
+      });
+    });
     this.webSocket.listen("connect").subscribe(data => {
       console.log("I am Connected to Socket server");
-      this.webSocket.emit("message", { data: "Hello World" });
+      this.webSocket.emit("session_request", { session_id: "shivampip" });
     });
   }
 }

@@ -7,7 +7,7 @@ import { Observable } from "rxjs";
 })
 export class HiSocketService {
   socket: any;
-  readonly url: string = "ws://localhost:8080";
+  readonly url: string = "ws://153.92.4.175:5005/";
 
   constructor() {
     this.socket = io(this.url);
